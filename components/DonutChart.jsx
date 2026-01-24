@@ -45,7 +45,7 @@ export default function DonutChart() {
   const total = tasks.reduce((sum, task) => sum + task.value, 0);
   const strokeWidth = 8;
 
-  // Calculate the arc length based on static percentage
+  
   const calculateArc = (arcPercentage, radius) => {
     const circumference = 2 * Math.PI * radius;
     const arcLength = (circumference * arcPercentage) / 100;
@@ -54,15 +54,16 @@ export default function DonutChart() {
   };
 
   return (
-    <div className="bg-white p-4 sm:p-6 rounded-lg border border-gray-200">
-      <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-4 sm:mb-6">
+    <div className="bg-white p-4 sm:p-6 rounded-lg border border-gray-200 shadow-sm">
+      <h3 className="text-sm font-medium text-[#46474A] mb-4 sm:mb-6 font-sans">
         Task Status Distribution
       </h3>
-      <div className="grid grid-cols-3 items-center justify-between gap-6 sm:gap-12">
-        {/* Layered Donut Chart */}
-        <div className="relative w-48 h-48 sm:w-48 sm:h-44 flex-shrink-0">
+      <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between gap-2">
+        {/*-------- Layered Donut Chart----------------- */}
+        <div className="relative w-48 h-48 sm:w-48 sm:h-44 shrink-0">
           <svg viewBox="0 0 200 200" className="w-full h-full">
-            {/* Background concentric circles for depth */}
+
+            {/*---------------- Background concentric circles for depth-------------- */}
             {tasks.slice(0, 4).map((task, index) => (
               <circle 
                 key={`bg-${index}`}
@@ -75,7 +76,8 @@ export default function DonutChart() {
               />
             ))}
             
-            {/* Individual colored donuts with static arc lengths */}
+            {/*----------------- Individual colored donuts with static arc lengths---------------- */}
+
             {tasks.slice(0, 4).map((task, index) => {
               const { arcLength, gapLength } = calculateArc(task.arcPercentage, task.radius);
               return (
@@ -96,7 +98,7 @@ export default function DonutChart() {
             })}
           </svg>
           
-          {/* Center percentage */}
+          {/*-------------------- Center percentage----------------------- */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
               <span className="text-lg sm:text-lg font-bold text-gray-900">67%</span>
@@ -104,12 +106,12 @@ export default function DonutChart() {
           </div>
         </div>
 
-        {/* Legend */}
-        <div className="space-y-3 w-full sm:w-auto col-span-2">
+        
+        <div className="space-y-3 w-full sm:w-auto">
           {tasks.map((task, index) => (
-            <div key={index} className="flex items-center justify-between gap-8 sm:gap-12">
+            <div key={index} className="flex items-center justify-center gap-8">
               <div className="flex items-center gap-3">
-                <div className={`w-3 h-3 ${task.bgColor} rounded-sm flex-shrink-0`}></div>
+                <div className={`w-3 h-3 ${task.bgColor} rounded-sm shrink-0`}></div>
                 <span className="text-sm text-gray-700 whitespace-nowrap">{task.label}</span>
               </div>
               <span className="text-sm font-medium text-gray-900 ml-auto">
@@ -118,7 +120,7 @@ export default function DonutChart() {
             </div>
           ))}
           <div className="border-t border-gray-200 pt-3 mt-3">
-            <div className="flex items-center justify-between gap-8 sm:gap-12">
+            <div className="flex items-center justify-between gap-8">
               <span className="text-sm font-medium text-gray-700">Total task</span>
               <span className="text-sm font-semibold text-gray-900 ml-auto">{total}</span>
             </div>

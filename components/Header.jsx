@@ -1,6 +1,7 @@
 
 'use client';
 import { Bell, Sun, Grid3x3, Menu } from 'lucide-react';
+import Image from 'next/image';
 import { BiMessageRoundedDetail } from "react-icons/bi";
 import { PiDotsNineBold } from "react-icons/pi";
 
@@ -8,7 +9,7 @@ export default function Header({ onMenuClick }) {
     return (
         <header className="bg-white border-b border-gray-200 px-3 sm:px-6 py-3 flex items-center justify-between  rounded-tl-[12px] rounded-tr-[12px] shadow-sm">
             <div className="flex items-center gap-3">
-                {/* Mobile Menu Button */}
+                {/*----------------- Mobile Menu Button----------------- */}
                 <button
                     onClick={onMenuClick}
                     className="lg:hidden p-2 hover:bg-gray-100 rounded-lg"
@@ -44,8 +45,10 @@ export default function Header({ onMenuClick }) {
                 <button className="w-7 h-7 hover:bg-gray-100 rounded-lg hidden md:block">
                     <PiDotsNineBold className="w-full h-full text-gray-600" />
                 </button>
-                <button className="p-2 hover:bg-gray-100 rounded-lg">
-                    <div className="w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full"></div>
+                <button className=" hover:bg-gray-100 rounded-full">
+                    <div className="w-5 h-5 rounded-full">
+                        <Image className='w-full h-full rounded-full' src="/assets/users/025edb7427d5adb8825bc5985f02dcbac32d247b.jpg" alt="DX Group" width={100} height={100} />
+                    </div>
                 </button>
             </div>
         </header>
